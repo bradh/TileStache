@@ -466,6 +466,10 @@ def _parseConfigfileLayer(layer_dict, config, dirpath):
                 provider_kwargs['layer_index'] = provider_dict['layer index']
             if 'scale' in provider_dict:
                 provider_kwargs['scale'] = provider_dict['scale']
+        
+        elif _class is Providers.GeoPackage.Provider:
+	    provider_kwargs['geopackage'] = provider_dict['geopackage']
+            provider_kwargs['tileset'] = provider_dict['tileset']
             
     elif 'class' in provider_dict:
         _class = loadClassPath(provider_dict['class'])

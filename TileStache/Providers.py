@@ -11,6 +11,7 @@ Built-in providers:
 - url template (UrlTemplate)
 - mbtiles (TileStache.MBTiles.Provider)
 - mapnik grid (Mapnik.GridProvider)
+- geopackage (TileStache.GeoPackage.Provider)
 
 Example built-in provider, for JSON configuration file:
 
@@ -91,6 +92,7 @@ import Vector
 import MBTiles
 import Geography
 from .Mapnik import ImageProvider as MapnikImage, GridProvider as MapnikGrid
+import GeoPackage
 
 # Already deprecated; provided for temporary backward-compatibility with
 # old location of Mapnik provider. TODO: remove in next major version.
@@ -118,6 +120,9 @@ def getProviderByName(name):
 
     elif name.lower() == 'mapnik grid':
         return MapnikGrid
+
+    elif name.lower() == "geopackage":
+	return GeoPackage.Provider
 
     raise Exception('Unknown provider name: "%s"' % name)
 
